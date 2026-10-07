@@ -8,7 +8,7 @@
 
 | Day | Date | Category | Target / Topic | One-line Summary | Test File Link |
 | :---: | :---: | :---: | :--- | :--- | :---: |
-| **Day 01** | 2026-10-07 | Backend | FastAPI & pytest 기초 | `TestClient`로 `GET`/`POST` 기본 요청 및 `isinstance` 방어적 응답 검증 손코딩 완성 | [test_get_drills.py](./backend/tests/test_get_drills.py) |
+| **Day 01** | 2026-10-07 | Backend | FastAPI & pytest 기초 | `TestClient`로 `GET`/`POST` 기본 요청 및 `isinstance` 방어적 응답 검증 손코딩 완성 | [GET 드릴](./backend/tests/test_get_drills.py)<br>[POST 드릴](./backend/tests/test_post_drills.py) |
 | Day 02 | - | - | - | - | - |
 | Day 03 | - | - | - | - | - |
 | Day 04 | - | - | - | - | - |
@@ -33,7 +33,7 @@ test-code-mastery/
 │   └── tests/
 │       ├── conftest.py        # 공통 fixture (TestClient 배달부)
 │       ├── test_get_drills.py # 오늘 직접 손코딩한 GET 드릴
-│       ├── test_post_drills.py# POST 생성 드릴
+│       ├── test_post_drills.py# 오늘 직접 손코딩한 POST 생성 드릴 (손코딩 4번)
 │       └── test_ticket_booking.py # 기차표 예매 도메인 테스트
 │
 └── frontend/                  # ⚡ 타입스크립트 테스트 놀이터 (React + Vitest)

@@ -5,6 +5,7 @@ from fastapi import FastAPI
 from fastapi.testclient import TestClient
 import pytest
 
+from ontology_cases.workspaces import router as workspace_router
 from train_ticket.booking import router as ticket_router
 
 
@@ -13,6 +14,7 @@ def app() -> FastAPI:
     """테스트용 FastAPI 애플리케이션 생성."""
     application = FastAPI(title="Test Code Mastery API")
     application.include_router(ticket_router)
+    application.include_router(workspace_router)
     return application
 
 
