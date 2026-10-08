@@ -31,8 +31,8 @@
 
 | Day | Date | Category | Target / Topic | One-line Summary | Test File Link |
 | :---: | :---: | :---: | :--- | :--- | :---: |
-| **Day 01** | 2026-10-07 | Backend | ontology-map & FastAPI 기초 | `TestClient`로 `GET`/`POST` 기본 요청 및 `isinstance` 방어적 응답 검증 손코딩 완성 | [GET 드릴](./backend/tests/test_get_drills.py)<br>[POST 드릴](./backend/tests/test_post_drills.py) |
-| Day 02 | - | - | - | - | - |
+| **Day 01** | 2026-10-07 | Backend | ontology-map & 백엔드 테스트 실무 6대 영역 완전 정복 | `TestClient` 기본요청, 422 정밀검증(`loc`), `params`/경로변수, `@pytest.fixture`(`Generator`), `dependency_overrides` 안전격리, SQLAlchemy DB 조회, `monkeypatch` 외부통신 차단까지 총 14개 실무 드릴 손코딩 완주 | • [GET 드릴](./backend/tests/test_get_drills.py)<br>• [POST 드릴](./backend/tests/test_post_drills.py)<br>• [인증/헤더 드릴](./backend/tests/test_auth_drills.py)<br>• [DB 드릴](./backend/tests/test_db_drills.py)<br>• [Monkeypatch 드릴](./backend/tests/test_monkeypatch_drills.py) |
+| **Day 02** | 2026-10-08 | Backend | Pydantic 스키마 심층 정복 | `Field` 제약조건, `extra='forbid'`, 데이터 계약(Contract)의 원리와 테스트 자동 연동 정복 (예정) | *(예정)* |
 | Day 03 | - | - | - | - | - |
 | Day 04 | - | - | - | - | - |
 | Day 05 | - | - | - | - | - |
@@ -45,7 +45,7 @@
 test-code-mastery/
 ├── README.md                  # 📌 대시보드 (학습 일지 목차 & 레퍼런스 프로젝트 소개)
 ├── docs/                      # 💡 핵심 문법 및 치트시트 요약
-│   ├── pytest-cheatsheet.md   # pytest, TestClient, Fixture 패턴 모음
+│   ├── pytest-cheatsheet.md   # pytest, TestClient, Fixture, Monkeypatch 패턴 모음
 │   └── vitest-cheatsheet.md   # Vitest, React Testing Library 패턴 모음
 │
 ├── backend/                   # 🐍 파이썬 테스트 놀이터 (FastAPI + pytest)
@@ -55,8 +55,11 @@ test-code-mastery/
 │   │   └── train_ticket/      # 🚄 Fudan Train Ticket 비즈니스 도메인 (예매, 매진, 멱등성)
 │   └── tests/
 │       ├── conftest.py        # 공통 fixture (TestClient 배달부)
-│       ├── test_get_drills.py # [Day 01] GET 기초 및 404/200 손코딩 드릴
-│       ├── test_post_drills.py# [Day 01] ontology 워크스페이스 생성 POST 드릴
+│       ├── test_get_drills.py # [Day 01] GET 기초 및 404/200/params/경로변수 손코딩 드릴
+│       ├── test_post_drills.py# [Day 01] POST 생성, 422 정밀 타격, Fixture 드릴
+│       ├── test_auth_drills.py# [Day 01] Header 검증 및 safe signed_client Fixture 드릴
+│       ├── test_db_drills.py  # [Day 01] SQLAlchemy get() 및 select() DB 롤백 드릴
+│       ├── test_monkeypatch_drills.py # [Day 01] 외부 통신 차단 및 with pytest.raises 드릴
 │       └── test_ticket_booking.py # Train Ticket 기차표 예매/매진/멱등성 도메인 테스트
 │
 └── frontend/                  # ⚡ 타입스크립트 테스트 놀이터 (React + Vitest)

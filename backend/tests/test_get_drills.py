@@ -35,3 +35,34 @@ def test_get_seat_availability_not_found(client: TestClient) -> None:
     data = response.json()
     assert isinstance(data, dict)
     assert data["detail"]["code"] == "TRAIN_NOT_FOUND"
+
+
+def test_search_workspaces_by_query(client: TestClient) -> None:
+    """[손코딩 6] 검색 쿼리 파라미터(params=) 및 리스트 컴프리헨션 in 방어 검증."""
+    query = {"q": "연구"}
+    response = client.get("/api/v1/workspaces", params=query)
+
+    assert response.status_code == 200
+
+    data = response.json()
+    assert isinstance(data, dict)
+    assert data["total"] == 1
+
+    # 🛡️ 리스트 컴프리헨션 + in 방어 검증: 순서가 바뀌어도, 빈 리스트여도 안전!
+    names = [item["name"] for item in data["items"]]
+    assert "연구 프로젝트" in names
+
+
+def test_get_workspace_by_id(client: TestClient) -> None:
+    """[손코딩 7] 경로 변수(f-string)를 사용한 단건 상세 조회 및 정밀 검증."""
+    target_id = "ws-1"
+    response = client.get(f"/api/v1/workspaces/{target_id}")
+
+    assert response.status_code == 200
+
+    data = response.json()
+    assert isinstance(data, dict)
+
+    # 타겟 ID와 반환된 객체의 ID/이름 검증
+    assert data["id"] == target_id
+    assert data["name"] == "연구 프로젝트"
